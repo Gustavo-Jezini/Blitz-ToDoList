@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
+import CardToDo from './CardToDo';
 
 const TodoFinalizado = () => {
   const todos = useSelector((state) => state.todos);
@@ -8,11 +9,7 @@ const TodoFinalizado = () => {
   const finishedTodos = todos.filter((todo) => todo.progress === 'finished');
   return (
     <div>
-      <ul>
-      {finishedTodos.map((toDos) => {
-      return <li key={todos._id}>{toDos.needTodo}</li>
-      })}
-    </ul>
+      <CardToDo todoList={finishedTodos} />
     </div>
   )
 }

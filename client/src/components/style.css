@@ -14,3 +14,9 @@ body {
 .form-label {
   width: 100px;
 }
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

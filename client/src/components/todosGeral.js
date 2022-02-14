@@ -2,6 +2,7 @@ import React from 'react'
 import TodoEmProgresso from './todos/todoEmProgresso';
 import TodoFinalizado from './todos/todoFinalizado';
 import TodoPendente from './todos/todoPendente';
+import './style.css'
 
 import { useSelector } from 'react-redux';
 
@@ -13,11 +14,11 @@ const TodosGeral = () => {
 
   return (
     !todos.length ? <h1>Loading</h1> : (
-      <>
-      {<TodoPendente />}
-      <TodoEmProgresso />
-      <TodoFinalizado />
-      </>
+      <main>
+        <TodoPendente />
+        <TodoEmProgresso />
+        <TodoFinalizado />
+      </main>
     )
   )
 }

@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import PostToDo from "../models/todoModel.js"
 
 export const getTodos = async (req, res) => {
@@ -25,3 +26,13 @@ export const createTodo = async (req, res) => {
     res.status(409).json({ message: error.message })
   }
 };
+
+export const updateTodo = async (req, res) => {
+  const { id: _id } = req.params;
+  const todo = req.body;
+  if(!mongoose.Types.ObjectId.IsValid(_id)) return res.status(404).send('Tarefa nao encontrada');
+
+  const updatedToDo = await PostToDo.findByIdAndUpdate(_id, todo, { new: true }); 
+
+  res.json(updatedToDo);
+}

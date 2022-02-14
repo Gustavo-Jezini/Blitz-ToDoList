@@ -36,3 +36,13 @@ export const updateTodo = async (req, res) => {
 
   res.json(updatedToDo);
 }
+
+export const deleteTodo = async (req, res) => {
+  const { id: _id } = req.params;
+  
+  if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Tarefa nao encontrada');
+
+  await PostToDo.findByIdAndRemove(_id);
+  
+  res.json({ message: 'Tarefa excluida com sucesso'});
+}

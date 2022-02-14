@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     // É Preciso de uma action para utilizar o dispatch.
     dispatch(getTodos());
-  }, [dispatch])
+  }, [currentId, dispatch])
 
   return(
     <>

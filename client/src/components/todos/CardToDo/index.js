@@ -1,7 +1,12 @@
 import React from 'react'
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../../../actions/todos'
 
 const CardToDo = ({ todoList, setCurrentId }) => {
+  const dispatch = useDispatch();
+
+  
   return (
     <ul>
     {todoList.map((toDos) => {
@@ -13,7 +18,7 @@ const CardToDo = ({ todoList, setCurrentId }) => {
     <h5 >{moment(toDos.createdAt).fromNow()}</h5>
     <button  onClick={() => {}}>Iniciar Tarefa</button>
     <button  onClick={() => {setCurrentId(toDos._id)}}>Edit</button>
-    <button  onClick={() => {}}>delete</button>
+    <button  onClick={() => {dispatch(deleteTodo(toDos._id))}}>delete</button>
     </li>
       )
     })}

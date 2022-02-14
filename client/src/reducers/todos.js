@@ -1,5 +1,7 @@
 const todos = (todos = [], action) => {
   switch (action.type) {
+    case "DELETE":
+      return todos.filter((todo) => todo._id !== action.payload)
     case "FETCH_ALL":
       return action.payload;
     case "CREATE":

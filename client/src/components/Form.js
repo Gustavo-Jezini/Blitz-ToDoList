@@ -20,16 +20,26 @@ const Form = ({ setCurrentId, currentId }) => {
     e.preventDefault();
 
     if(currentId) {
-      dispatch(updateTodo(currentId, todoData))
-    } else { dispatch(createTodo(todoData)) }
+      dispatch(updateTodo(currentId, todoData));
+    } else { 
+      dispatch(createTodo(todoData)) 
+    }
+    clear();
+  }
 
-   
+  const clear = (e) => {
+    setCurrentId(null);
+    setTodoData({
+      title: '',
+      needTodo: '',
+      creator: '',
+    });
   }
 
   return (
     <div className="form">
       <label className="form-label">
-        Criador da Tarefa
+        { currentId ? "Editar tarefa" : "Criar tarefa"}
         <input 
         type="text"
         name='creator'
@@ -58,7 +68,7 @@ const Form = ({ setCurrentId, currentId }) => {
       <button
       onClick={handleClick}
       >
-        Gerar Tarefa
+        Enviar
       </button>
     </div>
   )

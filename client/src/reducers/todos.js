@@ -3,7 +3,7 @@ const todos = (state = [], action) => {
     case "FETCH_ALL":
       return action.payload;
     case "CREATE":
-      return state;
+      return [...todos, action.payload];
     default:
       return state
   }

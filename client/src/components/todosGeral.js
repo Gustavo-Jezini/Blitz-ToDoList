@@ -12,11 +12,13 @@ const TodosGeral = () => {
   console.log(todos);
 
   return (
-    <>
-    <TodoPendente />
-    <TodoEmProgresso />
-    <TodoFinalizado />
-    </>
+    !todos.length ? <h1>Loading</h1> : (
+      <>
+      {<TodoPendente />}
+      <TodoEmProgresso />
+      <TodoFinalizado />
+      </>
+    )
   )
 }
 

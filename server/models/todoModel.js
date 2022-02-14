@@ -4,6 +4,10 @@ const postSchema = mongoose.Schema({
     title: String,
     needTodo: String,
     creator: String,
+    progress: {
+        type: String,
+        default: 'begin'
+    },
     createdAt: {
         type: Date,
         default: new Date(),

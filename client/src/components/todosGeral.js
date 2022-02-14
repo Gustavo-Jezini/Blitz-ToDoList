@@ -6,7 +6,7 @@ import './style.css'
 
 import { useSelector } from 'react-redux';
 
-const TodosGeral = () => {
+const TodosGeral = ({ setCurrentId }) => {
   // Tem acesso a todo state do redux
   const todos = useSelector((state) => state.todos)
 
@@ -15,9 +15,9 @@ const TodosGeral = () => {
   return (
     !todos.length ? <h1>Loading</h1> : (
       <main>
-        <TodoPendente />
-        <TodoEmProgresso />
-        <TodoFinalizado />
+        <TodoPendente setCurrentId={setCurrentId} />
+        <TodoEmProgresso setCurrentId={setCurrentId} />
+        <TodoFinalizado setCurrentId={setCurrentId} />
       </main>
     )
   )

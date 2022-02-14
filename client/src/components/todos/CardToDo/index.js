@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment';
 
-const CardToDo = ({ todoList }) => {
+const CardToDo = ({ todoList, setCurrentId }) => {
   return (
     <ul>
     {todoList.map((toDos) => {
@@ -12,7 +12,7 @@ const CardToDo = ({ todoList }) => {
     <p >{toDos.needTodo}</p>
     <h5 >{moment(toDos.createdAt).fromNow()}</h5>
     <button  onClick={() => {}}>Iniciar Tarefa</button>
-    <button  onClick={() => {}}>Edit</button>
+    <button  onClick={() => {setCurrentId(toDos._id)}}>Edit</button>
     <button  onClick={() => {}}>delete</button>
     </li>
       )

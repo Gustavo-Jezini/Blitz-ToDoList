@@ -19,4 +19,15 @@ export const createTodo = (todo) => async (dispatch) => {
   } catch (error) {
     console.log(error.message);
   }
+};
+
+export const updateTodo = (id, todo) => async (dispatch) => {
+  try {
+    const { data } = await api.updateTodo(id, todo);
+    console.log(data, 'Arquivo action, deveria ter mudado');
+
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
 }

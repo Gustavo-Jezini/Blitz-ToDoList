@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./components/Form";
 import TodosGeral from "./components/todosGeral";
 
@@ -7,6 +7,7 @@ import { getTodos } from './actions/todos.js'
 import { useDispatch } from "react-redux";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
   // Hook para realizar um dispatch
   const dispatch = useDispatch();
 
@@ -17,8 +18,8 @@ const App = () => {
 
   return(
     <>
-      <Form />
-      <TodosGeral />
+      <Form currentId={currentId} setCurrentId={setCurrentId} />
+      <TodosGeral setCurrentId={setCurrentId} />
     </>
   )
 }

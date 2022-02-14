@@ -1,20 +1,29 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { createTodo } from '../actions/todos';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { createTodo, updateTodo } from '../actions/todos';
 import './style.css'
 
-const Form = () => {
+const Form = ({ setCurrentId, currentId }) => {
   const dispatch = useDispatch();
+  const todo = useSelector((state) => currentId ? state.todos.find(todo => todo._id === currentId) : null)
   const [todoData, setTodoData] = useState({
     title: '',
     needTodo: '',
     creator: '',
   });
 
+  useEffect(() => {
+    if(todo) setTodoData(todo)
+  }, [todo])
+
   const handleClick = (e) => {
     e.preventDefault();
 
-    dispatch(createTodo(todoData))
+    if(currentId) {
+      dispatch(updateTodo(currentId, todoData))
+    } else { dispatch(createTodo(todoData)) }
+
+   
   }
 
   return (

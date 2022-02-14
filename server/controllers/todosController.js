@@ -30,7 +30,7 @@ export const createTodo = async (req, res) => {
 export const updateTodo = async (req, res) => {
   const { id: _id } = req.params;
   const todo = req.body;
-  if(!mongoose.Types.ObjectId.IsValid(_id)) return res.status(404).send('Tarefa nao encontrada');
+  if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Tarefa nao encontrada');
 
   const updatedToDo = await PostToDo.findByIdAndUpdate(_id, todo, { new: true }); 
 
